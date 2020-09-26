@@ -6,12 +6,16 @@ class App extends React.Component{
     isLoading: true,
     moview: []
   }
+  // async : getMovies 함수가 비동기로서 await를 끝날 때까지 기다린 후 진행
+  getMovies = async () => {
+    const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+  }
   componentDidMount() {
     // setTimeout() : JavaScript함수
     // setTimeout(() => {
     //   this.setState({ isLoading: false });
     // }, 6000);
-    axios.get("https://yts-proxy.now.sh/list_movies.json");
+    this.getMovies();
   }
   render() {
     // ES6방식 : 원래라면 this.state.isLoading 으로 state에 접근해야 하지만 아래와 같은 ES6방식으로도 접근할 수 있음
