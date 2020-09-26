@@ -7,3 +7,7 @@ create project
 start project
 
 - npm start
+
+install axios
+
+- npm i axios
