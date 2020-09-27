@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Movie from "./Movie";
 
 class App extends React.Component{
   state = {
@@ -9,12 +10,12 @@ class App extends React.Component{
   // async : getMovies 함수가 비동기로서 await를 끝날 때까지 기다린 후 진행
   getMovies = async () => {
     const {
-      data: { 
-        data: { 
-          movies 
-        } 
+      data: {
+        data: { movies }
       }
-    } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
+    } = await axios.get(
+      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
+    );
     this.setState({ movies, isLoading: false });
     // console.log(movies);
   }
@@ -27,8 +28,23 @@ class App extends React.Component{
   }
   render() {
     // ES6방식 : 원래라면 this.state.isLoading 으로 state에 접근해야 하지만 아래와 같은 ES6방식으로도 접근할 수 있음
-    const { isLoading } = this.state;
-    return <div>{isLoading ? "Loading..." : "We are ready"}</div>;
+    const { isLoading, movies } = this.state;
+    return (
+      <div>
+        {isLoading
+          ? "Loading..."
+          : movies.map(movie => (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                year={movie.year}
+                title={movie.title}
+                summary={movie.summary}
+                poster={movie.medium_cover_image}
+              />
+            ))}
+      </div>
+    );
   }
 }
 
