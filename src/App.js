@@ -4,11 +4,19 @@ import axios from "axios";
 class App extends React.Component{
   state = {
     isLoading: true,
-    moview: []
+    movies: []
   }
   // async : getMovies 함수가 비동기로서 await를 끝날 때까지 기다린 후 진행
   getMovies = async () => {
-    const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+    const {
+      data: { 
+        data: { 
+          movies 
+        } 
+      }
+    } = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+    this.setState({ movies, isLoading: false });
+    // console.log(movies);
   }
   componentDidMount() {
     // setTimeout() : JavaScript함수
