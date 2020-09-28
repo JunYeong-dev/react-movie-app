@@ -30,10 +30,14 @@ class App extends React.Component{
     // ES6방식 : 원래라면 this.state.isLoading 으로 state에 접근해야 하지만 아래와 같은 ES6방식으로도 접근할 수 있음
     const { isLoading, movies } = this.state;
     return (
-      <div>
+      <section class="container">
         {isLoading
-          ? "Loading..."
-          : movies.map(movie => (
+          ? (<div class="loader">
+            <span class="loader_text">"Loading..."</span>
+            </div>)
+          : (
+            <div class="movies">
+            {movies.map(movie => (
               <Movie
                 key={movie.id}
                 id={movie.id}
@@ -43,7 +47,9 @@ class App extends React.Component{
                 poster={movie.medium_cover_image}
               />
             ))}
-      </div>
+            </div>
+        )}
+      </section>
     );
   }
 }
