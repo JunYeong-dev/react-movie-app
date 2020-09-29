@@ -31,13 +31,16 @@ class App extends React.Component{
     // ES6방식 : 원래라면 this.state.isLoading 으로 state에 접근해야 하지만 아래와 같은 ES6방식으로도 접근할 수 있음
     const { isLoading, movies } = this.state;
     return (
-      <section class="container">
+      // JSX이기 때문에 주의해야 할 것
+      // JavaScript class 안에 있으면 component class에 의해 혼동되기 때문에 html태그의 class는 className으로 바꿔줘야함
+      // 비슷한 예로 HTML에서 <label for=""> 이란 속성이 있지만 JavaScript에서는 for은 loop를 뜻하기 때문에 <label htmlFor="">으로 써줘야함
+      <section className="container">
         {isLoading
-          ? (<div class="loader">
-            <span class="loader_text">"Loading..."</span>
+          ? (<div className="loader">
+            <span className="loader_text">"Loading..."</span>
             </div>)
           : (
-            <div class="movies">
+            <div className="movies">
             {movies.map(movie => (
               <Movie
                 key={movie.id}
@@ -46,6 +49,7 @@ class App extends React.Component{
                 title={movie.title}
                 summary={movie.summary}
                 poster={movie.medium_cover_image}
+                genres={movie.genres}
               />
             ))}
             </div>
