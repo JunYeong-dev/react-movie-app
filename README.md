@@ -11,3 +11,7 @@ start project
 install axios
 
 - npm i axios
+
+install gh-pages
+
+- npm i gh-pages
