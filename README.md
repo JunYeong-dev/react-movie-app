@@ -15,3 +15,7 @@ install axios
 install gh-pages
 
 - npm i gh-pages
+
+create build 
+
+- nom run build
