@@ -19,3 +19,7 @@ install gh-pages
 create build 
 
 - nom run build
+
+install react-router-dom
+
+- npm install react-router-dom
