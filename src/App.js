@@ -2,10 +2,12 @@ import React from "react";
 import { HashRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import About from "./routes/About";
+import Navigation from "./components/Navigation";
 
 function App(){
   return (
     <HashRouter>
+      <Navigation />
       {/* 꼭 path와 component의 이름이 같을 필요는 없음 */}
       {/* 
         React의 Route는 같은 경로에 있는 모든 것을 rendering하기 때문에 exact={ true } 옵션이 없는 상태에서
