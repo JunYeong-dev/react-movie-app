@@ -1,4 +1,5 @@
 import React from "react";
+// Router에는 HashRouter뿐만 아니라 BrowserRouter도 있음 - 가장 눈에 띄는 차이는 url에 #의 유무
 import { HashRouter, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import About from "./routes/About";
